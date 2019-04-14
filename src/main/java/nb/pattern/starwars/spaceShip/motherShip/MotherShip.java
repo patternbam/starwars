@@ -22,15 +22,8 @@ public class MotherShip {
 			sendOrderToAllFighters(order);
 			
 		} else if(isIndividual(order)) {
-			if("X_Wing".equals(order.getFighter())) {
-				xWing.receiveOrder(order);
-				
-			} else if("Y_Wing".equals(order.getFighter())) {
-				yWing.receiveOrder(order);
-				
-			} else {
-				throw new IllegalArgumentException("Unkwon fighter type.");
-			}
+			xWing.receiveOrder(order);
+			yWing.receiveOrder(order);
 			
 		} else {
 			
