@@ -1,11 +1,19 @@
 package nb.pattern.starwars.spaceShip.fighter.type;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import nb.pattern.starwars.constant.BroadcastTypeConstant;
 import nb.pattern.starwars.message.Message;
 import nb.pattern.starwars.spaceShip.fighter.Fighter;
 
-public class Y_Wing extends Fighter {
+public class Y_Wing extends Fighter implements Observer {
 
+	@Override
+	public void update(Observable o, Object arg) {
+		receiveOrder((Message)arg);
+	}
+	
 	@Override
 	public boolean receiveOrder(Message order) {
 

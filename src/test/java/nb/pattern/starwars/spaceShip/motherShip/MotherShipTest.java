@@ -13,9 +13,11 @@ import nb.pattern.starwars.constant.MessageOptionConstant;
 import nb.pattern.starwars.message.Message;
 import nb.pattern.starwars.message.Notice;
 import nb.pattern.starwars.message.Order;
+import nb.pattern.starwars.spaceShip.fighter.type.B_Wing;
+import nb.pattern.starwars.spaceShip.fighter.type.MillenniumFalcon;
+import nb.pattern.starwars.spaceShip.fighter.type.StarFighter;
 import nb.pattern.starwars.spaceShip.fighter.type.X_Wing;
 import nb.pattern.starwars.spaceShip.fighter.type.Y_Wing;
-import nb.pattern.starwars.spaceShip.motherShip.MotherShip;
 
 public class MotherShipTest {
 
@@ -26,11 +28,20 @@ public class MotherShipTest {
 	private MotherShip motherShip = new MotherShip();;
 	private X_Wing xWing = new X_Wing();
 	private Y_Wing yWing = new Y_Wing();
-
+	private B_Wing bWing = new B_Wing();
+	private StarFighter starFighter = new StarFighter();
+	private MillenniumFalcon millenniumFalcon = new MillenniumFalcon();
+	
 	@Before
 	public void setup() {
 		motherShip.setxWing(xWing);
 		motherShip.setyWing(yWing);
+		
+		motherShip.addObserver(xWing);
+		motherShip.addObserver(yWing);
+		motherShip.addObserver(bWing);
+		motherShip.addObserver(starFighter);
+		motherShip.addObserver(millenniumFalcon);
 	}
 
 	@Test

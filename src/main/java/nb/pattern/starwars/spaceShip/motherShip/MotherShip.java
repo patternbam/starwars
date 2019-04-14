@@ -1,12 +1,14 @@
 package nb.pattern.starwars.spaceShip.motherShip;
 
+import java.util.Observable;
+
 import nb.pattern.starwars.constant.BroadcastTypeConstant;
 import nb.pattern.starwars.constant.MessageOptionConstant;
 import nb.pattern.starwars.message.Message;
 import nb.pattern.starwars.spaceShip.fighter.type.X_Wing;
 import nb.pattern.starwars.spaceShip.fighter.type.Y_Wing;
 
-public class MotherShip {
+public class MotherShip extends Observable {
 
 	private MessageOptionConstant option;
 	private BroadcastTypeConstant broadcast;
@@ -22,15 +24,8 @@ public class MotherShip {
 			sendOrderToAllFighters(order);
 			
 		} else if(isIndividual(order)) {
-			if("X_Wing".equals(order.getFighter())) {
-				xWing.receiveOrder(order);
-				
-			} else if("Y_Wing".equals(order.getFighter())) {
-				yWing.receiveOrder(order);
-				
-			} else {
-				throw new IllegalArgumentException("Unkwon fighter type.");
-			}
+			setChanged();
+			notifyObservers(order);
 			
 		} else {
 			
